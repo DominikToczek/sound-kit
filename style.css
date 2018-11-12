@@ -1,0 +1,35 @@
+body {
+    padding: 0;
+    margin: 0;
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #333333;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+}
+
+.buttons-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.button {
+    border-radius: 50%;
+    background: red;
+    padding: 50px;
+    font-size: 40px;
+    margin: 20px 40px;
+}
+
+.button span {
+    display: block;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+}
