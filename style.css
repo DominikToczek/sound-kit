@@ -33,3 +33,20 @@ body {
     height: 45px;
     text-align: center;
 }
+
+.record-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+}
+
+.record-panel-btn-box {
+    display: flex;
+    margin: 5px 0px;
+}
+
+.btn-control {
+    display: flex;
+    margin: 5px;
+}

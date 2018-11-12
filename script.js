@@ -1,5 +1,5 @@
+let sound = document.querySelector('#audio');
 document.body.addEventListener('keypress', (e)=> {
-    let sound = document.querySelector('#audio');
     sound.currentTime = 0;
     switch(e.charCode)
     {
@@ -75,8 +75,8 @@ function upButton(id)
     document.getElementById(id).style.background = "red";
 }
 
-document.body.addEventListener('keyup', (f)=> {
-    switch(f.keyCode)
+document.body.addEventListener('keyup', (e)=> {
+    switch(e.keyCode)
     {
         case 81:   
             upButton('q');
@@ -116,3 +116,33 @@ document.body.addEventListener('keyup', (f)=> {
             break;
     }
 })
+
+let date = new Date();
+let elem = document.getElementById("checkbox-record");
+let tab = [];
+
+elem.addEventListener('click', function(){
+    if (elem.checked)
+    {
+        let i = 0;
+        document.onkeydown = function(e)
+        {
+            let key = getKey(e);
+            tab[i] = key;
+            i++;
+        }
+    }
+});
+
+function getKey(e)
+{
+    return e.keyCode;
+}
+
+function wypisz()
+{
+    for (let i=0; i< tab.length; i++)
+    {
+        console.log(tab[i]);
+    }
+}
