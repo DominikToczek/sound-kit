@@ -1,4 +1,4 @@
-let sound = document.querySelector('#audio');
+const sound = document.querySelector('#audio');
 document.body.addEventListener('keypress', (e)=> {
     sound.currentTime = 0;
     switch(e.charCode)
@@ -117,32 +117,106 @@ document.body.addEventListener('keyup', (e)=> {
     }
 })
 
-let date = new Date();
-let elem = document.getElementById("checkbox-record");
-let tab = [];
 
-elem.addEventListener('click', function(){
-    if (elem.checked)
+const checkbox = document.getElementById("checkbox-record");
+let tabKey = [];
+let tabTime = [];
+
+checkbox.addEventListener('change', function(){
+    if (checkbox.checked)
     {
         let i = 0;
         document.onkeydown = function(e)
         {
-            let key = getKey(e);
-            tab[i] = key;
+            let date = new Date().getTime();
+            let key = e.keyCode;
+            tabKey[i] = key;
+            tabTime[i] = date;
             i++;
         }
     }
 });
 
-function getKey(e)
+const playBtn = document.getElementById('btn-play');
+const stopBtn = document.getElementById('btn-stop');
+
+playBtn.addEventListener('click', (e) => {
+    for (let i=0; i<tabKey.length; i++)
+    {
+        if (i !== 0)
+        {
+            setTimeout(function(){play(tabKey[i])}, calculateTime(i));
+        }
+        else
+        {
+            play(tabKey[i]);
+        }
+    }
+})
+
+function calculateTime(i)
 {
-    return e.keyCode;
+    return tabTime[i] - tabTime[0];
 }
 
-function wypisz()
+function play(keyCode)
 {
-    for (let i=0; i< tab.length; i++)
+    switch(keyCode)
     {
-        console.log(tab[i]);
+        case 81:
+            sound.currentTime = 0;
+            sound.src = 'sounds/boom.wav';
+            break;
+        case 87:
+            sound.currentTime = 0;
+            sound.src = 'sounds/clap.wav';
+            break;
+        case 69:
+            sound.currentTime = 0;
+            sound.src = 'sounds/hihat.wav';
+            break;
+        case 82:
+            sound.currentTime = 0;
+            sound.src = 'sounds/kick.wav';
+            break;
+        case 65:   
+            sound.currentTime = 0;
+            sound.src = 'sounds/my-man.mp3';
+            break;
+        case 83:
+            sound.currentTime = 0;
+            sound.src = 'sounds/openhat.wav';
+            break;
+        case 68:
+            sound.currentTime = 0;
+            sound.src = 'sounds/pickle_rick.mp3';
+            break;
+        case 70:
+            sound.currentTime = 0;
+            sound.src = 'sounds/ride.wav';
+            break;
+        case 90:   
+            sound.currentTime = 0;
+            sound.src = 'sounds/snap-yes_1.mp3';
+            break;
+        case 88:
+            sound.currentTime = 0;
+            sound.src = 'sounds/snare.wav';
+            break;
+        case 67:
+            sound.currentTime = 0;
+            sound.src = 'sounds/tink.wav';
+            break;
+        case 86:
+            sound.currentTime = 0;
+            sound.src = 'sounds/tom.wav';
+            break;
     }
+    sound.play();
 }
+
+stopBtn.addEventListener('click', (e) => {
+    tabKey = {};
+    sound.pause();
+    sound.currentTime = 0;
+})
