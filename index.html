@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
@@ -48,20 +49,58 @@
             <div class="button" id="c">
                 <span>C</span>
             </div>
-            <div class="button" id="V">
+            <div class="button" id="v">
                 <span>V</span>
             </div>
         </div>
     </div>
-    <div class="record-panel">
-        <div>
-            Record
-            <input type="checkbox" name="checkbox-record" id="checkbox-record">
+    <div class="control-panel">
+        <div class="record-panel-container">
+            <div class="record-panel">
+                <span>Soundtrack 1</span>
+                <div class="checkbox-title">
+                    Record
+                    <input type="checkbox" name="checkbox-record" id="checkbox-record-1">
+                </div>
+                <div class="record-panel-btn-box">
+                    <button id="btn-play" class="btn-control">Play</button>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="record-panel">
+                <span>Soundtrack 2</span>
+                <div class="checkbox-title">
+                    Record
+                    <input type="checkbox" name="checkbox-record" id="checkbox-record-2">
+                </div>
+                <div class="record-panel-btn-box">
+                    <button id="btn-play" class="btn-control">Play</button>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="record-panel">
+                <span>Soundtrack 3</span>
+                <div class="checkbox-title">
+                    Record
+                    <input type="checkbox" name="checkbox-record" id="checkbox-record-3">
+                </div>
+                <div class="record-panel-btn-box">
+                    <button id="btn-play" class="btn-control">Play</button>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="record-panel">
+                <span>Soundtrack 4</span>
+                <div class="checkbox-title">
+                    Record
+                    <input type="checkbox" name="checkbox-record" id="checkbox-record-4">
+                </div>
+                <div class="record-panel-btn-box">
+                    <button id="btn-play" class="btn-control">Play</button>
+                </div>
+            </div>
         </div>
-        <div class="record-panel-btn-box">
-            <button id="btn-play" class="btn-control">Play</button>
-            <button id="btn-stop" class="btn-control">Stop</button>
-        </div>
+        <button class="btn-control"><i class="fas fa-play play-icon"></i>Play All</button>
     </div>
     <script type="text/javascript" src="script.js"></script>
 </body>
