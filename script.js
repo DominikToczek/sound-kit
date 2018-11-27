@@ -118,11 +118,26 @@ document.body.addEventListener('keyup', (e)=> {
 })
 
 
-const checkbox = document.getElementById("checkbox-record");
-let tabKey = [];
-let tabTime = [];
+const checkbox1 = document.getElementById("checkbox-record-1");
+const checkbox2 = document.getElementById("checkbox-record-2");
+const checkbox3 = document.getElementById("checkbox-record-3");
+const checkbox4 = document.getElementById("checkbox-record-4");
+const playBtn1 = document.getElementById('btn-play-1');
+const playBtn2 = document.getElementById('btn-play-2');
+const playBtn3 = document.getElementById('btn-play-3');
+const playBtn4 = document.getElementById('btn-play-4');
+const playAllBtn = document.getElementById('btn-play-all');
+let tabKey1 = [];
+let tabTime1 = [];
+let tabKey2 = [];
+let tabTime2 = [];
+let tabKey3 = [];
+let tabTime3 = [];
+let tabKey4 = [];
+let tabTime4 = [];
 
-checkbox.addEventListener('change', function(){
+
+function record(checkbox, tabKey, tabTime){
     if (checkbox.checked)
     {
         let i = 0;
@@ -135,26 +150,23 @@ checkbox.addEventListener('change', function(){
             i++;
         }
     }
-});
+}
 
-const playBtn = document.getElementById('btn-play');
-const stopBtn = document.getElementById('btn-stop');
-
-playBtn.addEventListener('click', (e) => {
+function playTrack(tabKey, tabTime){
     for (let i=0; i<tabKey.length; i++)
     {
         if (i !== 0)
         {
-            setTimeout(function(){play(tabKey[i])}, calculateTime(i));
+            setTimeout(function(){play(tabKey[i])}, calculateTime(i, tabTime));
         }
         else
         {
             play(tabKey[i]);
         }
     }
-})
+}
 
-function calculateTime(i)
+function calculateTime(i, tabTime)
 {
     return tabTime[i] - tabTime[0];
 }
@@ -164,59 +176,75 @@ function play(keyCode)
     switch(keyCode)
     {
         case 81:
-            sound.currentTime = 0;
             sound.src = 'sounds/boom.wav';
             break;
         case 87:
-            sound.currentTime = 0;
             sound.src = 'sounds/clap.wav';
             break;
         case 69:
-            sound.currentTime = 0;
             sound.src = 'sounds/hihat.wav';
             break;
         case 82:
-            sound.currentTime = 0;
             sound.src = 'sounds/kick.wav';
             break;
         case 65:   
-            sound.currentTime = 0;
             sound.src = 'sounds/my-man.mp3';
             break;
         case 83:
-            sound.currentTime = 0;
             sound.src = 'sounds/openhat.wav';
             break;
         case 68:
-            sound.currentTime = 0;
             sound.src = 'sounds/pickle_rick.mp3';
             break;
         case 70:
-            sound.currentTime = 0;
             sound.src = 'sounds/ride.wav';
             break;
         case 90:   
-            sound.currentTime = 0;
             sound.src = 'sounds/snap-yes_1.mp3';
             break;
         case 88:
-            sound.currentTime = 0;
             sound.src = 'sounds/snare.wav';
             break;
         case 67:
-            sound.currentTime = 0;
             sound.src = 'sounds/tink.wav';
             break;
         case 86:
-            sound.currentTime = 0;
             sound.src = 'sounds/tom.wav';
             break;
     }
     sound.play();
 }
 
-stopBtn.addEventListener('click', (e) => {
-    tabKey = {};
-    sound.pause();
-    sound.currentTime = 0;
+checkbox1.addEventListener('change', function(){
+    record(checkbox1,tabKey1,tabTime1);
+});
+checkbox2.addEventListener('change', function(){
+    record(checkbox2,tabKey2,tabTime2);
+});
+checkbox3.addEventListener('change', function(){
+    record(checkbox3,tabKey3,tabTime3);
+});
+checkbox4.addEventListener('change', function(){
+    record(checkbox4,tabKey4,tabTime4);
+});
+
+playBtn1.addEventListener('click', (e) => {
+    playTrack(tabKey1, tabTime1);
+})
+
+playBtn2.addEventListener('click', (e) => {
+    playTrack(tabKey2, tabTime2);
+})
+
+playBtn3.addEventListener('click', (e) => {
+    playTrack(tabKey3, tabTime3);
+})
+playBtn4.addEventListener('click', (e) => {
+    playTrack(tabKey4, tabTime4);
+})
+playAllBtn.addEventListener('click', (e) => {
+    playTrack(tabKey1, tabTime1);
+    playTrack(tabKey2, tabTime2);
+    playTrack(tabKey3, tabTime3);
+    playTrack(tabKey4, tabTime4);
 })
