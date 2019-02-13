@@ -1,4 +1,6 @@
 const sound = document.querySelector('#audio');
+
+// funkcja odtwarzająca dźwięk (po wciśnięciu klawisza)
 document.body.addEventListener('keypress', (e)=> {
     sound.currentTime = 0;
     switch(e.charCode)
@@ -136,7 +138,7 @@ let tabTime3 = [];
 let tabKey4 = [];
 let tabTime4 = [];
 
-
+// funkcja nagrywająca dźwięk(dokładnie to zapisująca czas wciskania klawiszy) po zaznaczeniu ścieżki do nagrywania
 function record(checkbox, tabKey, tabTime){
     if (checkbox.checked)
     {
@@ -152,12 +154,13 @@ function record(checkbox, tabKey, tabTime){
     }
 }
 
+// funkcja odtwarzająca wybraną ścieżkę dźwiękową
 function playTrack(tabKey, tabTime){
     for (let i=0; i<tabKey.length; i++)
     {
-        if (i !== 0)
+        if (i !== 0)    // jeżeli klawisz(dźwięk) nie jest pierwszym elementem tablicy z zapisanymi klawiszami podczas nagrywania ścieżki
         {
-            setTimeout(function(){play(tabKey[i])}, calculateTime(i, tabTime));
+            setTimeout(function(){play(tabKey[i])}, calculateTime(i, tabTime)); // to funkcja odlicza czas od poprzedniego dźwięku i dopiero wtedy odtwarza kolejny dźwięk
         }
         else
         {
@@ -166,11 +169,13 @@ function playTrack(tabKey, tabTime){
     }
 }
 
+// funkcja pomocnicza obliczająca różnicę czasu pomiędzy dwoma zapisanymi czasami (dźwięków)
 function calculateTime(i, tabTime)
 {
     return tabTime[i] - tabTime[0];
 }
 
+// funkcja odtwarzająca odpowiedni dźwięk
 function play(keyCode)
 {
     switch(keyCode)
